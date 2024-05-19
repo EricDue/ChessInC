@@ -53,7 +53,6 @@ int check_path_collision(PathCheck *check) {
 }
 
 
-
 int valid_move_queen(int dx, int dy) {
     return (dx == dy || dx == 0 || dy == 0);  // Valid for queen (horizontal, vertical, diagonal)
 }
@@ -113,13 +112,12 @@ int move_piece(Piece *piece, int dest_x, int dest_y, Piece* pieces) {
             valid = (move_type != 0);
             break;
         default:
-            return 1;  // Invalid piece type
+            return -1;  // Invalid piece type
     }
 
     if (!valid) {
-        return 1;  // Invalid move
+        return 3;  // Invalid move
     }
-
     // Check the path for obstacles or capture opportunities
     PathCheck check = { start_x, start_y, dest_x, dest_y, piece->player, pieces };
     int path_result = check_path_collision(&check);
@@ -133,6 +131,5 @@ int move_piece(Piece *piece, int dest_x, int dest_y, Piece* pieces) {
     if (path_result == 2) {
         return 2;  // Move successful with capture
     }
-
     return 0;  // Move successful
 }

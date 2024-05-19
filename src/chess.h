@@ -2,6 +2,8 @@
 
 #define CHESS
 
+// necessary enums & structs for the pieces
+
 typedef enum Figure {
 	PAWN,
 	ROOK,
