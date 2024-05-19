@@ -2,28 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
-
-//TODO rewrite typedef
-typedef enum Figure {
-	PAWN,
-	ROOK,
-	KNIGHT,
-	BISHOP,
-	QUEEN,
-	KING
-} Figure;
-
-typedef enum Player {
-	WHITE,
-	BLACK
-} Player;
-
-typedef struct Piece {
-	int id;
-    Player player;
-	Figure type;
-	int position[2];
-} Piece;
+#include "chess.h"
 
 void set_piece(Piece *piece,int id, Figure type, Player player, int x, int y) {
 	piece->id = id;
@@ -70,13 +49,14 @@ Piece* init_board() {
 }
 
 
-
 void cleanup_board(Piece *pieces) {
 	free(pieces);
 }
 
 int draw_board() {
 	//TODO draw board here -> parse into unicode or store code into struct
+	//this function should be called everytime the board is updated
+	//so after a round is finished (counter for round incremented too (metadata) etc)
 	return 0;
 }
 
