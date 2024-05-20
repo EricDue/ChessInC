@@ -12,7 +12,7 @@ void set_piece(Piece *piece,int id, Figure type, Player player, int x, int y) {
 	piece->position[1] = y;	
 }
 
-Piece* init_board() {
+Piece* init_pieces() {
     Piece* pieces = (Piece*)malloc(32 * sizeof(Piece));
     if (pieces == NULL) {
         perror("Failed to allocate memory");
@@ -49,18 +49,21 @@ Piece* init_board() {
 }
 
 
+
 void cleanup_board(Piece *pieces) {
 	free(pieces);
 }
 
-int draw_board() {
-	//TODO draw board here -> parse into unicode or store code into struct
-	//this function should be called everytime the board is updated
-	//so after a round is finished (counter for round incremented too (metadata) etc)
-	return 0;
+int main_gameloop() {
+   //TODO game loop here 
+   return 0;
 }
 
 int main() {
+	Piece *pieces = init_pieces();
 
+
+	
+	cleanup_board(pieces);
 	return 0;
 }
