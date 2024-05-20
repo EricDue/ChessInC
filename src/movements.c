@@ -40,6 +40,9 @@ int check_path_collision(PathCheck *check) {
                 if (check->pieces[i].player == check->player) {
                     return 1; // Path blocked
                 } else {
+                    if (check->pieces[i].type == KING) {
+                        return 3; // Path encounters a king
+                    }
 					check->pieces[i].captured = 1;
                     return 2; // Piece can be captured
                 }
@@ -90,6 +93,7 @@ int move_piece(Piece *piece, int dest_x, int dest_y, Piece* pieces) {
     int start_y = piece->position[1];
     int dx = dest_x - start_x;
     int dy = dest_y - start_y;
+
     int valid = 0;
     int move_type = 0;
 
