@@ -22,50 +22,6 @@ typedef struct {
 int check_path_collision(PathCheck *check);
 
 /**
- * Checks if the movement is valid for the queen piece
- *
- * @param coordinates of the destinitation
- * @return 0 if move is valid, 1 if move is invalid for this piece
- */
-int valid_move_queen(int dx, int dy);
-
-
-/**
- * Checks if the movement is valid for the rook piece
- *
- * @param coordinates of the destinitation
- * @return 0 if move is valid, 1 if move is invalid for this piece
- */
-int valid_move_rook(int dx, int dy);
-
-
-/**
- * Checks if the movement is valid for the bishop piece
- *
- * @param coordinates of the destinitation
- * @return 0 if move is valid, 1 if move is invalid for this piece
- */
-int valid_move_bishop(int dx, int dy);
-
-
-/**
- * Checks if the movement is valid for the knight piece
- *
- * @param coordinates of the destinitation
- * @return 0 if move is valid, 1 if move is invalid for this piece
- */
-int valid_move_knight(int dx, int dy);
-
-
-/**
- * Checks if the movement is valid for the pawn piece
- *
- * @param coordinates of the destinitation, current player,  y coordinate of the current position
- * @return 0 if move is valid, 1 if move is invalid for this piece
- */
-int valid_move_pawn(int dx, int dy, Player player, int start_y);
-
-/**
  * executes the movement, first checks if movement of piece is valid and then if the path is valid
  *
  * @param takes a pointer to the piece, and the coordinates where the piece should move

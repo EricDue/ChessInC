@@ -1,5 +1,5 @@
-#include "chess.h"
 #include "movements.h"
+#include "gamestate.h"
 
 int is_check(Piece *pieces, int king_x, int king_y, Player player) {
     for (int i = 0; i < 32; i++) {
@@ -74,4 +74,30 @@ int is_checkmate(Piece *pieces, int king_x, int king_y, Player player) {
     }
 
     return is_checkmate;
+}
+
+GameState check_game_state(Piece *pieces, Player current_player) {
+    int king_x, king_y;
+
+    // Find the current player's king
+    for (int i = 0; i < 32; i++) {
+        if (pieces[i].type == KING && pieces[i].player == current_player) {
+            king_x = pieces[i].position[0];
+            king_y = pieces[i].position[1];
+            break;
+        }
+    }
+
+    // Check if the current player's king is in check
+    if (is_check(pieces, king_x, king_y, current_player)) {
+        // Check if it is checkmate
+        if (is_checkmate(pieces, king_x, king_y, current_player)) {
+            return CHECKMATE;
+        } else {
+            return CHECK;
+        }
+    }
+
+    // No check or checkmate
+    return GAME_CONTINUE;
 }

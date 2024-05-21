@@ -4,6 +4,10 @@
 #include <errno.h>
 #include "chess.h"
 
+#include "movements.h"
+#include "gamestate.h"
+#include "userinterface.h"
+
 void set_piece(Piece *piece,int id, Figure type, Player player, int x, int y) {
 	piece->id = id;
 	piece->type = type;
@@ -55,7 +59,7 @@ void cleanup_board(Piece *pieces) {
 }
 
 int main_gameloop() {
-   //TODO game loop here 
+   
    return 0;
 }
 
