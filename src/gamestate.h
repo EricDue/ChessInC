@@ -11,11 +11,12 @@ typedef enum {
 } GameState;
 
 /**
- * Checks the current state of the Game
+ * Determines the current state of the game for the current player.
  * 
- * @param takes a pointer to the pieces
- * @return returns current gamestate
-*/
+ * @param pieces Array of pieces on the board
+ * @param current_player The player whose game state is being checked
+ * @return CHECKMATE if the player is in checkmate, CHECK if in check, GAME_CONTINUE otherwise
+ */
 GameState check_game_state(Piece *pieces, Player current_player);
 
 #endif
