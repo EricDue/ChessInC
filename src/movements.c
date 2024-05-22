@@ -1,6 +1,16 @@
 #include "movements.h"
 #include <stdlib.h>
 
+int calculate_step_direction(int start, int end) {
+    int direction = end - start;
+
+	if (direction == 0) {
+		return 0;  // No movement in the x direction
+	} else if (direction > 0) {
+		return 1;  // Moving right
+    }
+	return -1; // Moving left
+}
 
 int check_path_collision(PathCheck *check) {
 
@@ -87,6 +97,9 @@ int valid_move_pawn(int dx, int dy, Player player, int start_y) {
     return 0;  // Invalid move
 }
 
+int validate_move() {
+
+}
 
 int move_piece(Piece *piece, int dest_x, int dest_y, Piece* pieces) {
     int start_x = piece->position[0];
