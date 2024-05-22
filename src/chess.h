@@ -1,7 +1,6 @@
 #ifndef CHESS
 #define CHESS
 
-
 // necessary enums & structs for the pieces
 typedef enum Figure {
 	PAWN,
@@ -12,12 +11,10 @@ typedef enum Figure {
 	KING
 } Figure;
 
-
 typedef enum Player {
 	WHITE,
 	BLACK
 } Player;
-
 
 typedef struct Piece {
 	int id;
@@ -26,6 +23,5 @@ typedef struct Piece {
 	int position[2];
 	int captured;
 } Piece;
-
 
 #endif

@@ -3,7 +3,6 @@
 
 #include "chess.h"
 
-
 /**
  * inits the Piece's for the board, allocates memory from the Heap 
  * 

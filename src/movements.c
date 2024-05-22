@@ -1,7 +1,6 @@
 #include "movements.h"
 #include <stdlib.h>
 
-
 // Calculate step direction from start to end
 /**
  * Calculates if movement is happening in a direction

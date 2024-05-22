@@ -3,7 +3,6 @@
 
 #include "chess.h"
 
-
 typedef struct {
     int start_x;
     int start_y;
@@ -12,7 +11,6 @@ typedef struct {
     Player player;
     Piece* pieces;
 } PathCheck;
-
 
 /**
  * Checks for path collisions from start to end position
@@ -33,6 +31,5 @@ int check_path_collision(PathCheck *check);
  * @return 0 if move successful, 1 if path blocked, 2 if move successful with capture, 3 if invalid move.
  */
 int move_piece(Piece *piece, int dest_x, int dest_y, Piece* pieces);
-
 
 #endif

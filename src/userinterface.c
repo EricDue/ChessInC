@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include "movements.h"
 
-
 /**
  * Get the character representation for a piece
  * 

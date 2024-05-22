@@ -1,7 +1,6 @@
 #include "movements.h"
 #include "gamestate.h"
 
-
 /**
  * Finds the position of the current player's king
  * 

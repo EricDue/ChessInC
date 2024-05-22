@@ -3,7 +3,6 @@
 
 #include "chess.h"
 
-
 /**
  * Setup and draw the board
  * 
@@ -20,6 +19,5 @@ void setup_and_draw_board(Piece* pieces);
  * @param board The board
  */
 void handle_next_move(Piece pieces[], char board[8][8]);
-
 
 #endif

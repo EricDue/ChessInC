@@ -8,7 +8,6 @@
 #include "userinterface.h"
 #include "main.h"
 
-
 /**
  * sets the attributes of a new piece
  * @param piece pointer to the piece
