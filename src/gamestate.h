@@ -1,14 +1,15 @@
 #ifndef GAMESTATE
-
 #define GAMESTATE
 
 #include "chess.h"
+
 
 typedef enum {
     GAME_CONTINUE,
     CHECK,
     CHECKMATE
 } GameState;
+
 
 /**
  * Determines the current state of the game for the current player.
@@ -18,5 +19,6 @@ typedef enum {
  * @return CHECKMATE if the player is in checkmate, CHECK if in check, GAME_CONTINUE otherwise
  */
 GameState check_game_state(Piece *pieces, Player current_player);
+
 
 #endif
