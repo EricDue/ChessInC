@@ -2,19 +2,30 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
-#include "chess.h"
 
 #include "movements.h"
 #include "gamestate.h"
 #include "userinterface.h"
+#include "main.h"
 
-void set_piece(Piece *piece,int id, Figure type, Player player, int x, int y) {
-	piece->id = id;
-	piece->type = type;
-	piece->player = player;
-	piece->position[0] = x;	
-	piece->position[1] = y;	
+
+/**
+ * sets the attributes of a new piece
+ * @param piece pointer to the piece
+ * @param id id of the piece
+ * @param type type of the piece
+ * @param player which color the piece has
+ * @param x x-coordinate of the piece
+ * @param y y-coordinate of the piece
+*/
+void set_piece(Piece *piece, int id, Figure type, Player player, int x, int y) {
+    piece->id = id;
+    piece->type = type;
+    piece->player = player;
+    piece->position[0] = x;
+    piece->position[1] = y;
 }
+
 
 Piece* init_pieces() {
     Piece* pieces = (Piece*)malloc(32 * sizeof(Piece));
@@ -53,21 +64,40 @@ Piece* init_pieces() {
 }
 
 
-
 void cleanup_board(Piece *pieces) {
-	free(pieces);
+    free(pieces);
 }
 
-int main_gameloop() {
-   
-   return 0;
+
+void main_gameloop(Piece *pieces) {
+    Player current_player = WHITE;
+    GameState game_state = GAME_CONTINUE;
+
+    while (game_state == GAME_CONTINUE) {
+        print_metadata(current_player);
+        setup_and_draw_board(pieces);
+
+        handle_next_move(pieces, (char[8][8]){});
+        game_state = check_game_state(pieces, current_player);
+
+        if (game_state == CHECK) {
+            printf("Check!\n");
+        } else if (game_state == CHECKMATE) {
+            printf("Checkmate! %s wins!\n", current_player == WHITE ? "Black" : "White");
+            break;
+        }
+
+        current_player = (current_player == WHITE) ? BLACK : WHITE;
+    }
 }
+
 
 int main() {
-	Piece *pieces = init_pieces();
+    printf("ChessInC - v0.0.1\n");
 
+    Piece *pieces = init_pieces();
+    main_gameloop(pieces);
+    cleanup_board(pieces);
 
-	
-	cleanup_board(pieces);
-	return 0;
+    return 0;
 }
