@@ -71,22 +71,26 @@ void cleanup_board(Piece *pieces) {
 void main_gameloop(Piece *pieces) {
     Player current_player = WHITE;
     GameState game_state = GAME_CONTINUE;
+    char board[8][8];
 
     while (game_state == GAME_CONTINUE) {
         print_metadata(current_player);
         setup_and_draw_board(pieces);
 
-        handle_next_move(pieces, (char[8][8]){});
+        handle_next_move(pieces, board);
+
         game_state = check_game_state(pieces, current_player);
 
-        if (game_state == CHECK) {
-            printf("Check!\n");
-        } else if (game_state == CHECKMATE) {
-            printf("Checkmate! %s wins!\n", current_player == WHITE ? "Black" : "White");
-            break;
-        }
-
         current_player = (current_player == WHITE) ? BLACK : WHITE;
+    }
+
+    // Draw the final board state
+    setup_and_draw_board(pieces);
+
+    if (game_state == CHECKMATE) {
+        printf("Checkmate! %s wins!\n", (current_player == WHITE) ? "Black" : "White");
+    } else if (game_state == CHECK) {
+        printf("Check! %s is in check.\n", (current_player == WHITE) ? "White" : "Black");
     }
 }
 
