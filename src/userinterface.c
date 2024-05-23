@@ -2,6 +2,14 @@
 #include <stdio.h>
 #include "movements.h"
 
+//Workaround for scanner
+#ifdef _WIN32
+#define SCANF_FUNC scanf_s
+#else
+#define SCANF_FUNC scanf
+#endif
+
+
 /**
  * Get the character representation for a piece
  * 
@@ -22,11 +30,6 @@ char get_piece_char(Figure type, Player player) {
 }
 
 
-/**
- * Print metadata about the current player
- * 
- * @param current_player The player whose turn it is
- */
 void print_metadata(Player current_player) {
     printf("Current Player: %s\n", current_player == WHITE ? "White" : "Black");
 }
@@ -98,15 +101,28 @@ Piece* select_piece(Piece *pieces, int x, int y) {
 }
 
 
+/**
+ * gets the needed coordinates from the stdin (macro usage for windows compatibility)
+ * 
+ * @param x pointer to the x-coordinate
+ * @param y pointer to the y-coordinate
+ * 
+ * @todo fix SCANF_FUNC function missmatching
+*/
+void get_coordinates(int *x, int *y) {
+    unsigned char col;
+    int row;
+
+    SCANF_FUNC(" %c%d", &col, &row);
+    *x = col - 'a';
+    *y = row - 1;
+}
+
 void handle_next_move(Piece pieces[], char board[8][8]) {
     int start_x, start_y, dest_x, dest_y;
-    char start_col, dest_col;
-    int start_row, dest_row;
 
     printf("Enter the piece to move (e.g., e2): ");
-    scanf(" %c%d", &start_col, &start_row);
-    start_x = start_col - 'a';
-    start_y = start_row - 1;
+    get_coordinates(&start_x, &start_y);
 
     Piece* selected_piece = select_piece(pieces, start_x, start_y);
     if (selected_piece == NULL) {
@@ -115,9 +131,7 @@ void handle_next_move(Piece pieces[], char board[8][8]) {
     }
 
     printf("Enter the destination (e.g., e4): ");
-    scanf(" %c%d", &dest_col, &dest_row);
-    dest_x = dest_col - 'a';
-    dest_y = dest_row - 1;
+    get_coordinates(&dest_x, &dest_y);
 
     int move_result = move_piece(selected_piece, dest_x, dest_y, pieces);
 

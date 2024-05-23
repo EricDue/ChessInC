@@ -22,6 +22,58 @@ int check_path_collision(PathCheck *check);
 
 
 /**
+ * Returns if the move for the queen is valid (horizontal, vertical, diagonal).
+ * 
+ * @param difference_x Difference in x-coordinate.
+ * @param difference_y Difference in y-coordinate.
+ * @return 1 if valid move, 0 otherwise.
+ */
+int valid_move_queen(int difference_x, int difference_y);
+
+
+/**
+ * Returns if the move for the rook is valid (horizontal or vertical)
+ * 
+ * @param difference_x Difference in x-coordinate
+ * @param difference_y Difference in y-coordinate
+ * @return 1 if valid move, 0 otherwise
+ */
+int valid_move_rook(int difference_x, int difference_y);
+
+
+/**
+ * Returns if the move for the bishop is valid (diagonal).
+ * 
+ * @param difference_x Difference in x-coordinate.
+ * @param difference_y Difference in y-coordinate.
+ * @return 1 if valid move, 0 otherwise
+ */
+int valid_move_bishop(int difference_x, int difference_y);
+
+
+/**
+ * Returns if the move for the knight is valid (L-shape).
+ * 
+ * @param difference_x Difference in x-coordinate
+ * @param difference_y Difference in y-coordinate
+ * @return 1 if valid move, 0 otherwise
+ */
+int valid_move_knight(int difference_x, int difference_y);
+
+
+/**
+ * Returns if the move for the pawn is valid (horizontal, diagonal on capture).
+ * 
+ * @param difference_x Difference in x-coordinate
+ * @param difference_y Difference in y-coordinate
+ * @param player Player who is moving
+ * @param start_y Starting y-coordinate of the pawn
+ * @return 1 if valid move, 2 if valid capture move, 0 otherwise
+ */
+int valid_move_pawn(int difference_x, int difference_y, Player player, int start_y);
+
+
+/**
  * Moves the piece if the move is valid and path is clear.
  * 
  * @param piece Pointer to the piece

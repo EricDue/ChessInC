@@ -27,7 +27,7 @@ ChessInC is a console-based chess game designed to run on Unix and Windows syste
 
 ## Compilation
 
-- **Unix**: Run `./compile_unix.sh` from the project root directory.
+- **Unix**: Run `sudo sh compile_unix.sh` from the project root directory.
 - **Windows**: Run `.\compile_windows.ps1` from the project root directory.
 
 ## Usage

@@ -4,6 +4,14 @@
 #include "chess.h"
 
 /**
+ * Print metadata about the current player
+ * 
+ * @param current_player The player whose turn it is
+ */
+void print_metadata(Player current_player);
+
+
+/**
  * Setup and draw the board
  * 
  * @param pieces Array of pieces on the board
